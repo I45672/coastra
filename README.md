@@ -4,6 +4,8 @@ A one-page website for Coastra, a Singapore Polytechnic BETA student business th
 
 It's plain HTML, CSS and JavaScript. There's nothing to install and no build step.
 
+**Live site:** https://i45672.github.io/coastra/
+
 ## What's in this folder
 
 | File / folder | What it is | Upload to GitHub? |
