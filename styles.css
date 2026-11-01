@@ -986,6 +986,8 @@ a:hover { text-decoration-thickness: 0.14em; }
   translate: 0 -0.3em;
 }
 .receipt__line dd { order: 2; font-weight: 700; }
+.receipt__line--perk dd { color: var(--navy); }
+
 .receipt__line--total {
   margin-top: 6px;
   padding-top: 12px;
@@ -1195,6 +1197,12 @@ a:hover { text-decoration-thickness: 0.14em; }
   rotate: -1.5deg;
 }
 
+.booth__splash {
+  max-width: 46ch;
+  margin-top: 18px;
+  font-weight: 700;
+}
+
 .booth__fine {
   max-width: 46ch;
   margin-top: 18px;
@@ -1253,29 +1261,51 @@ a:hover { text-decoration-thickness: 0.14em; }
 
 /* ---------- team ---------- */
 
+.splash-perk {
+  max-width: 34rem;
+  margin-bottom: 52px;
+}
+.splash-perk__title {
+  margin-bottom: 8px;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: var(--step-3);
+  line-height: 1.05;
+  color: var(--navy);
+}
+.splash-perk p { line-height: 1.45; }
+.splash-perk__try { display: none; }
+.js .splash-perk__try {
+  display: block;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
 .team__grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 34px 14px;
+  gap: 32px 14px;
+  max-width: 1000px;
+  margin-inline: auto;
 }
 
 .member {
   --focus: var(--forest);
   position: relative;
-  flex: 0 1 calc(50% - 7px);
-  padding: 8px 8px 14px;
+  flex: 0 1 calc((100% - 14px) / 2);
+  padding: 8px 8px 12px;
   background: var(--frame);
   color: var(--forest);
   box-shadow: var(--hard);
   transform: rotate(var(--tilt, 0deg));
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
+.member:focus-within { transform: none; }
 
-/* The photos are already 3:4 full-body shots, so cover alone crops
-   nothing: the scale trims the empty wall around each person. */
 .member__photo {
-  aspect-ratio: 3 / 4;
+  position: relative;
+  aspect-ratio: 1;
   overflow: hidden;
   background: #e8e7e2;
 }
@@ -1283,18 +1313,15 @@ a:hover { text-decoration-thickness: 0.14em; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 35%;
-  transform: scale(1.75);
-  transform-origin: 50% 40%;
 }
 
 /* for members without a photo yet */
-.member__photo--initials {
+.member__initials {
   display: grid;
   place-items: center;
+  width: 100%;
+  height: 100%;
   background: var(--olive);
-}
-.member__photo--initials span {
   font-family: var(--font-hand);
   font-size: 4rem;
   line-height: 1;
@@ -1317,19 +1344,166 @@ a:hover { text-decoration-thickness: 0.14em; }
   font-size: 0.875rem;
   line-height: 1.25;
 }
-.member__bio {
+/* the graph-paper notes from the "Meet the team" post */
+.member__likes {
   margin-top: 8px;
-  font-size: 0.9375rem;
-  line-height: 1.45;
+  padding: 5px 8px;
+  background:
+    linear-gradient(rgba(48, 60, 36, 0.09) 1px, transparent 1px) 0 0 / 10px 10px,
+    linear-gradient(90deg, rgba(48, 60, 36, 0.09) 1px, transparent 1px) 0 0 / 10px 10px,
+    var(--paper);
+  font-family: var(--font-type);
+  font-size: 0.875rem;
+  line-height: 1.3;
 }
 
 @media (hover: hover) {
   .member:hover { transform: none; }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .member { flex-basis: calc((100% - 28px) / 3); }
+}
+
+@media (min-width: 900px) {
   .team__grid { gap: 44px 24px; }
-  .member { flex-basis: calc(25% - 18px); }
+  .member { flex-basis: calc((100% - 72px) / 4); }
+}
+
+/* ---------- practice splash (script.js adds the button and water) ---------- */
+
+.splash-btn {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.splash-btn:focus-visible { outline-offset: -5px; }
+
+/* a water drop in the corner says "you can tap this" */
+.splash-btn::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--paper);
+  border-radius: 0 50% 50% 50%;
+  background: #4f9fd0;
+  rotate: 45deg;
+  box-shadow: -2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.splash-btn::after {
+  content: "Splash!";
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 3px 10px 1px;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--navy);
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  line-height: 1.2;
+  box-shadow: -2px 2px 0 var(--ink);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.splash-btn:focus-visible::after { opacity: 1; }
+@media (hover: hover) {
+  .splash-btn:hover::after { opacity: 1; }
+}
+
+.splash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.splash__wash {
+  position: absolute;
+  inset: -30%;
+  background:
+    radial-gradient(circle at 34% 38%, rgba(255, 255, 255, 0.9) 0 2.5%, transparent 3.5%),
+    radial-gradient(circle at 60% 56%, rgba(255, 255, 255, 0.75) 0 1.8%, transparent 2.8%),
+    radial-gradient(circle at 46% 30%, rgba(255, 255, 255, 0.6) 0 1.2%, transparent 2.2%),
+    radial-gradient(ellipse at 45% 46%, rgba(132, 202, 238, 0.82) 0 36%, rgba(62, 143, 196, 0.6) 52%, transparent 68%);
+  opacity: 0;
+}
+
+.splash__word {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  translate: -50% -50%;
+  rotate: -8deg;
+  font-family: var(--font-hand);
+  font-size: 2.25rem;
+  line-height: 1;
+  color: #fff;
+  text-shadow: -2px 2px 0 var(--navy), 0 0 10px rgba(0, 50, 100, 0.45);
+  opacity: 0;
+}
+
+.splash i {
+  position: absolute;
+  top: 48%;
+  left: 46%;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff 0 18%, #8fd0f0 30%, #3e8fc4 100%);
+  opacity: 0;
+}
+.splash i:nth-child(3) { --dx: -78px; --dy: -62px; }
+.splash i:nth-child(4) { --dx: 66px; --dy: -74px; width: 8px; height: 8px; }
+.splash i:nth-child(5) { --dx: 88px; --dy: 8px; }
+.splash i:nth-child(6) { --dx: -92px; --dy: 18px; width: 14px; height: 14px; }
+.splash i:nth-child(7) { --dx: -44px; --dy: 76px; width: 8px; height: 8px; }
+.splash i:nth-child(8) { --dx: 50px; --dy: 70px; }
+.splash i:nth-child(9) { --dx: 6px; --dy: -96px; width: 13px; height: 13px; }
+.splash i:nth-child(10) { --dx: 100px; --dy: -40px; width: 7px; height: 7px; }
+
+.member__photo.is-wet .splash__wash { animation: splash-wash 2.4s ease-out forwards; }
+.member__photo.is-wet .splash__word { animation: splash-word 1.2s ease-out forwards; }
+.member__photo.is-wet .splash i { animation: splash-drop 0.75s cubic-bezier(0.2, 0.7, 0.3, 1) forwards; }
+.member.is-hit { animation: splash-jolt 0.45s ease-out; }
+
+@keyframes splash-wash {
+  0% { opacity: 0; transform: scale(0.2) translate(-45%, 45%); }
+  16% { opacity: 1; transform: scale(1.05) translate(0, 0); }
+  45% { opacity: 0.8; transform: scale(1.1) translate(2%, 4%); }
+  100% { opacity: 0; transform: scale(1.12) translate(3%, 12%); }
+}
+@keyframes splash-drop {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx, 40px), var(--dy, -40px)) scale(1); }
+}
+@keyframes splash-word {
+  0% { opacity: 0; scale: 0.5; }
+  25% { opacity: 1; scale: 1.12; }
+  70% { opacity: 1; scale: 1; }
+  100% { opacity: 0; scale: 1; }
+}
+@keyframes splash-jolt {
+  25% { translate: 5px -3px; }
+  50% { translate: -4px 2px; }
+  75% { translate: 2px -1px; }
+}
+
+/* reduced motion: no movement, just a moment of wet */
+@media (prefers-reduced-motion: reduce) {
+  .member__photo.is-wet .splash__wash { opacity: 0.65; transform: none; }
+  .member__photo.is-wet .splash__word { opacity: 1; }
 }
 
 /* ---------- FAQ ---------- */

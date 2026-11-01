@@ -71,6 +71,6 @@ Where to find common things in `index.html` (use your editor's search, `Ctrl+F`)
 | The recycled material | `TODO(TBC 3)` |
 | Order steps, to match your form | `TODO(TBC 4)` |
 | "Le Prechaun" spelling | `TODO(TBC 5)` |
-| Add a team member | `TODO(TBC 1)`: copy one `<li class="member">` block and change the photo, name, role and summary. Put the photo in `assets/team/` as `firstname-role.jpg`, ideally 615×820 like the others. No photo yet? The comment shows the initials-avatar version. |
+| Add a team member | `To add a member`: copy one `<li class="member">` block and change the photo, name, role and "Likes". Put a square photo in `assets/team/polaroid/`. No photo yet? The comment shows the initials version. |
 | Telegram link | `t.me` |
 | Pre-order form link | `docs.google.com/forms` (appears 3 times) |

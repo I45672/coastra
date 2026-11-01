@@ -105,6 +105,7 @@
 
         <div class="about__story">
           <p>We're Singapore Polytechnic students running Coastra as part of our BETA module. Our mission: <q>turning waste into value through creative design, donation drives, and a commitment to a greener future.</q></p>
+          <p>Semakau Island, Singapore's only landfill, is projected to run out of space by 2035. Every product that isn't upcycled adds to it.</p>
           <!-- TODO(TBC 3): once confirmed, name the recycled material in the next paragraph, e.g. "half recycled ___, half resin". -->
           <p>Every coaster is half recycled materials, half resin. That's half, not all, and we'd rather tell you straight. Each one is poured by hand, so no two are identical.</p>
         </div>
@@ -320,6 +321,7 @@
               <dl class="receipt__lines">
                 <div class="receipt__line"><dt>Coaster</dt><dd>$12</dd></div>
                 <div class="receipt__line"><dt>Coaster + name</dt><dd>$13</dd></div>
+                <div class="receipt__line receipt__line--perk"><dt><a href="#splash">Splash a member</a></dt><dd>free</dd></div>
                 <div class="receipt__line receipt__line--total"><dt>Total</dt><dd>$25</dd></div>
               </dl>
               <p class="receipt__sum">$12 + $13 = $25</p>
@@ -410,6 +412,7 @@
           </ol>
           <p class="booth__retry">Miss it? Try again on your next purchase.</p>
           <p class="booth__fine">Booth only: the discount doesn't apply to orders placed through the pre-order form.</p>
+          <p class="booth__splash">And when you buy, you get to splash water on one of our selected members. <a href="#splash">Meet the team</a></p>
           <!-- TODO (optional): add booth dates and locations here once you have them. -->
         </div>
 
@@ -427,58 +430,90 @@
     </section>
 
     <!-- ============ TEAM ============ -->
+    <!-- Names, roles and likes follow the "Meet the team" Instagram post (23 Oct 2026). -->
     <section class="team section section--mat" id="team" aria-labelledby="team-title">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title" id="team-title"><span class="tape">Meet the team</span></h2>
-          <p class="section-head__lede">The Singapore Polytechnic students who make, market and run Coastra.</p>
+          <p class="section-head__lede">The 11 Singapore Polytechnic students who make, market and run Coastra.</p>
         </div>
 
-        <!-- TODO(TBC 1): add new members by copying a card below.
-             No photo yet? Use the initials version instead of the <img>:
-             <div class="member__photo member__photo--initials" aria-hidden="true"><span>AB</span></div> -->
+        <!-- TODO: confirm the splash details (which members, and whether pre-orders get it at collection). See TODO.md. -->
+        <div class="splash-perk index-card taped" id="splash" style="--tilt:-0.8deg">
+          <h3 class="splash-perk__title">Buy a coaster, splash a member</h3>
+          <p>When you buy, you get to splash water on one of our selected members.</p>
+          <p class="splash-perk__try">Tap a photo below for a practice splash.</p>
+        </div>
+        <p class="visually-hidden" id="splash-status" role="status"></p>
+
+        <!-- To add a member: copy one <li class="member"> block. Square photos work best (assets/team/polaroid/).
+             No photo yet? Replace the <img> with: <span class="member__initials" aria-hidden="true">AB</span> -->
         <ul class="team__grid">
           <li class="member" data-reveal style="--tilt:-1.6deg">
-            <div class="member__photo"><img src="assets/team/jeremy-ceo.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Jeremy in glasses and a black T-shirt, smiling and making peace signs"></div>
+            <div class="member__photo"><img src="assets/team/polaroid/jeremy.jpg" width="261" height="261" loading="lazy" decoding="async" alt="Jeremy in glasses, smiling and holding up a phone"></div>
             <h3 class="member__name">Jeremy</h3>
             <p class="member__role">CEO</p>
-            <p class="member__bio">Sets Coastra's direction, keeps the team aligned on our sustainability mission and represents us externally.</p>
+            <p class="member__likes">Likes: volleyball</p>
           </li>
           <li class="member" data-reveal style="--tilt:1.2deg">
-            <div class="member__photo"><img src="assets/team/gwenda-marketing-manager.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Gwenda in a grey T-shirt, smiling and making peace signs"></div>
-            <h3 class="member__name">Gwenda</h3>
-            <p class="member__role">Marketing Manager</p>
-            <p class="member__bio">Leads our branding and social media, and keeps everything we put out visually consistent.</p>
+            <div class="member__photo"><img src="assets/team/polaroid/jayden.jpg" width="239" height="239" loading="lazy" decoding="async" alt="Jayden in a blurry close-up selfie, mid-laugh"></div>
+            <h3 class="member__name">Jayden</h3>
+            <p class="member__role">Secretary</p>
+            <p class="member__likes">Likes: bowling</p>
           </li>
           <li class="member" data-reveal style="--tilt:-0.8deg">
-            <div class="member__photo"><img src="assets/team/mattheus-finance-manager.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Mattheus in a cream shirt, grinning and making peace signs"></div>
-            <h3 class="member__name">Mattheus</h3>
+            <div class="member__photo"><img src="assets/team/polaroid/gwenda.jpg" width="261" height="261" loading="lazy" decoding="async" alt="Gwenda in a selfie with a cartoon big-eyes filter"></div>
+            <h3 class="member__name">Gwenda</h3>
             <p class="member__role">Finance Manager</p>
-            <p class="member__bio">Handles budgeting and tracks costs for materials and production.</p>
+            <p class="member__likes">Likes: Smiskis</p>
           </li>
           <li class="member" data-reveal style="--tilt:1.8deg">
-            <div class="member__photo"><img src="assets/team/myra-ops-manager.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Myra in black, laughing and making peace signs"></div>
-            <h3 class="member__name">Myra</h3>
-            <p class="member__role">Operations Manager</p>
-            <p class="member__bio">Runs production, from resin mixing to keeping the production schedule on track.</p>
+            <div class="member__photo"><img src="assets/team/polaroid/gladys.jpg" width="277" height="277" loading="lazy" decoding="async" alt="Gladys taking a mirror selfie in a white top"></div>
+            <h3 class="member__name">Gladys</h3>
+            <p class="member__role">HR</p>
+            <p class="member__likes">Likes: travelling</p>
           </li>
           <li class="member" data-reveal style="--tilt:-1.3deg">
-            <div class="member__photo"><img src="assets/team/ajith-hr-manager.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Ajith in a black T-shirt, smiling at the camera"></div>
-            <h3 class="member__name">Ajith</h3>
-            <p class="member__role">HR Manager</p>
-            <p class="member__bio">Looks after onboarding, scheduling, event coordination and team welfare.</p>
+            <div class="member__photo"><img src="assets/team/polaroid/myra.jpg" width="259" height="259" loading="lazy" decoding="async" alt="Myra in a black cap and sunglasses, taking a mirror selfie above a sunglasses display"></div>
+            <h3 class="member__name">Myra</h3>
+            <p class="member__role">Ops Manager</p>
+            <p class="member__likes">Likes: mahjong</p>
           </li>
           <li class="member" data-reveal style="--tilt:0.9deg">
-            <div class="member__photo"><img src="assets/team/jayden-deputy-finance-manager.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Jayden in a black T-shirt, standing against a white wall"></div>
-            <h3 class="member__name">Jayden</h3>
-            <p class="member__role">Deputy Finance Manager</p>
-            <p class="member__bio">Manages cash flow, supplier payments and cost control.</p>
+            <div class="member__photo"><img src="assets/team/polaroid/cayden.jpg" width="242" height="242" loading="lazy" decoding="async" alt="Cayden in a cat T-shirt, sitting on a bed among plush toys"></div>
+            <h3 class="member__name">Cayden</h3>
+            <p class="member__role">Productions Quality Manager</p>
+            <p class="member__likes">Likes: pool</p>
           </li>
           <li class="member" data-reveal style="--tilt:-1.9deg">
-            <div class="member__photo"><img src="assets/team/cayden-production-quality-coordinator.jpg" width="615" height="820" loading="lazy" decoding="async" alt="Cayden in a white jacket, making a peace sign and holding a phone"></div>
-            <h3 class="member__name">Cayden</h3>
-            <p class="member__role">Production &amp; Quality Coordinator</p>
-            <p class="member__bio">Runs quality checks and keeps every batch consistent.</p>
+            <div class="member__photo"><img src="assets/team/polaroid/mattheus.jpg" width="233" height="233" loading="lazy" decoding="async" alt="Mattheus mid-swing on a badminton court"></div>
+            <h3 class="member__name">Mattheus</h3>
+            <p class="member__role">Ops</p>
+            <p class="member__likes">Likes: badminton</p>
+          </li>
+          <li class="member" data-reveal style="--tilt:1.4deg">
+            <div class="member__photo"><img src="assets/team/polaroid/ajith.jpg" width="212" height="212" loading="lazy" decoding="async" alt="Ajith in a close-up photo, looking straight at the camera"></div>
+            <h3 class="member__name">Ajith</h3>
+            <p class="member__role">Ops</p>
+            <p class="member__likes">Likes: travelling</p>
+          </li>
+          <li class="member" data-reveal style="--tilt:-1deg">
+            <div class="member__photo"><img src="assets/team/polaroid/teng-hao.jpg" width="206" height="206" loading="lazy" decoding="async" alt="Teng Hao in a red football jersey, getting green face paint"></div>
+            <h3 class="member__name">Teng Hao</h3>
+            <p class="member__role">Ops</p>
+            <p class="member__likes">Likes: watching Cyberpunk</p>
+          </li>
+          <li class="member" data-reveal style="--tilt:1.6deg">
+            <div class="member__photo"><img src="assets/team/polaroid/yu-heng.jpg" width="261" height="261" loading="lazy" decoding="async" alt="Yu Heng in glasses, in a selfie with a Shrek filter"></div>
+            <h3 class="member__name">Yu Heng</h3>
+            <p class="member__role">Marketing</p>
+            <p class="member__likes">Likes: eating</p>
+          </li>
+          <li class="member" data-reveal style="--tilt:-1.5deg">
+            <div class="member__photo"><img src="assets/team/polaroid/haydn.jpg" width="269" height="269" loading="lazy" decoding="async" alt="Haydn by a reservoir, holding two fishing rods and biting a third"></div>
+            <h3 class="member__name">Haydn</h3>
+            <p class="member__role">Marketing</p>
+            <p class="member__likes">Likes: dogs</p>
           </li>
         </ul>
       </div>
@@ -518,6 +553,13 @@
             <div class="faq__answer">
               <!-- TODO: confirm heat tolerance before saying anything more here (see TODO.md). -->
               <p>Keep hot pots off it.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary>What's the splash?</summary>
+            <div class="faq__answer">
+              <!-- TODO: confirm which members are on splash duty and whether pre-orders get it at collection. -->
+              <p>When you buy, you get to splash water on one of our selected members. <a href="#splash">See who's on the team</a>.</p>
             </div>
           </details>
           <details class="faq__item">

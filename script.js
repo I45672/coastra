@@ -116,6 +116,45 @@
     forEach(revealables, function (el) { revealer.observe(el); });
   }
 
+  /* ---------- practice splash on the team photos ---------- */
+
+  var splashStatus = document.getElementById('splash-status');
+
+  forEach(document.querySelectorAll('.member__photo'), function (photo) {
+    var card = photo.closest('.member');
+    var name = card.querySelector('.member__name').textContent.trim();
+    var timer;
+
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'splash-btn';
+    button.setAttribute('aria-label', 'Practice splash on ' + name);
+
+    var water = document.createElement('span');
+    water.className = 'splash';
+    water.setAttribute('aria-hidden', 'true');
+    water.innerHTML = '<span class="splash__wash"></span><span class="splash__word">splash!</span>' +
+      '<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>';
+
+    photo.appendChild(water);
+    photo.appendChild(button);
+
+    button.addEventListener('click', function () {
+      // restart the animation even if they splash again straight away
+      photo.classList.remove('is-wet');
+      card.classList.remove('is-hit');
+      void photo.offsetWidth;
+      photo.classList.add('is-wet');
+      card.classList.add('is-hit');
+      if (splashStatus) splashStatus.textContent = 'Splash! ' + name + ' got soaked.';
+      window.clearTimeout(timer);
+      timer = window.setTimeout(function () {
+        photo.classList.remove('is-wet');
+        card.classList.remove('is-hit');
+      }, 2500);
+    });
+  });
+
   /* ---------- highlight the section you're in ---------- */
 
   var navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
