@@ -1,0 +1,5 @@
+# Keep private: business plan, build brief, team notes, local preview settings
+reference/
+PROMPT.md
+TODO.md
+.claude/
